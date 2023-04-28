@@ -44,7 +44,7 @@ router.post("/", async function (req, res) {
     let allstudents = await studentModel.find()
       let numberofStudents=parseInt(allstudents.length)+1
 
-      let stdID="sa"+parseInt(2000+numberofStudents)
+      let stdID="swa"+parseInt(1000+numberofStudents)
 
     const studentData = new studentModel({
       studentName: req.body.studentName,

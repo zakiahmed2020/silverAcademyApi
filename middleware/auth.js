@@ -8,7 +8,7 @@ function Auth(req, res,next) {
     try {
         const Decoded=jwt.verify(token,"jwtPriviteKey");
         // const Decoded=jwt.verify(token,config.get("jwtPriviteKey"));
-        const {SubscriptionExpiredDate,tokenExpiredDate}=Decoded
+        const {SubscriptionExpiredDate,tokenExpiredDate,userType}=Decoded
         let todaydate=moment()
         let subscriptionDate=moment(SubscriptionExpiredDate)
         let tokenDate=moment(tokenExpiredDate)
@@ -16,8 +16,8 @@ function Auth(req, res,next) {
         let reminedsecondstoken=tokenDate.diff(todaydate, 'seconds')
         let reminedsecondSubscription=subscriptionDate.diff(todaydate, 'seconds')
 
-        if(reminedsecondstoken<=0) return res.send({status:false,message:"token date was expired please logout then log in "})
-        if(reminedsecondSubscription<=0) return res.send({message:"subscription date was expired please logout then log in "})
+        if(reminedsecondstoken<=0 && userType!="superAdmin") return res.send({status:false,message:"token date was expired please logout then log in "})
+        if(reminedsecondSubscription<=0 && userType!="superAdmin") return res.send({status:false,message:"subscription date was expired please logout then log in "})
         
      
         req.user=Decoded;

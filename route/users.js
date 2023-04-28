@@ -93,7 +93,6 @@ router.put("/:id", async (req, res) => {
       name: req.body.name,
       username: req.body.username,   
       password: req.body.password,
-      userType: req.body.userType,
     };
     const salt = await bcrypt.genSalt(10);
     usersData.password = await bcrypt.hash(usersData.password, salt);

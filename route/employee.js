@@ -33,6 +33,8 @@ router.post("/", async function (req, res) {
     typeOfworking: req.body.typeOfworking,
     dateOfBirth: req.body.dateOfBirth,
     userID:req.body.userID,
+    salaryAmount:req.body.salaryAmount,
+    employeeStatus:req.body.employeeStatus,
   });
  
 
@@ -63,6 +65,7 @@ router.put("/:id", async (req, res) => {
         bloodType: req.body.bloodType,
         typeOfworking: req.body.typeOfworking,
         dateOfBirth: req.body.dateOfBirth,
+        salaryAmount:req.body.salaryAmount,
     };
    const upData = await  employeeModel.findByIdAndUpdate(req.params.id,
     employeeData,{new:true});
@@ -75,6 +78,7 @@ router.put("/:id", async (req, res) => {
     return res.json({status:false,message:error.message}) 
   }
 });
+
 router.delete("/:id", async (req, res) => {
   try {
     const {id} = req.params; 

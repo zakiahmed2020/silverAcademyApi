@@ -28,6 +28,7 @@ const ServiceReceipt =require('./route/serviceReceiptRoute')
 const subjectRoute =require('./route/subjectRoute')
 const MarksRoute =require('./route/marksRoute')
 const loginPortal =require('./route/portalLoginRoute')
+const payrollRoute =require('./route/payrollRoute')
 const Auth =require('./middleware/auth')
 
 var app = express();
@@ -64,6 +65,7 @@ app.use('/service',Service);
 app.use('/serviceReceipt',ServiceReceipt);
 app.use('/subject',subjectRoute);
 app.use('/marks',MarksRoute);
+app.use('/payroll',payrollRoute);
 
 app.use('/employee',Employee);
 app.use('/users',users);
@@ -71,7 +73,9 @@ app.use('/roles',roles);
 
 
 
-
+// "mongodb+srv://zaki:whYgBlTbwdFptidj@cluster0.gfvco6j.mongodb.net/test"
+// mongodb://127.0.0.1:27017/academyDB
+//  mongoose.connect("mongodb+srv://zaki:q3JoD0jh0w1gWi3y@cluster0.zomh4.mongodb.net/easysoftDemoDatabse").
  mongoose.connect("mongodb+srv://zaki:q3JoD0jh0w1gWi3y@cluster0.zomh4.mongodb.net/silveracademyDB").
  then(()=>console.log("Connected successfully mangodb"))
  .catch(err=>console.log("not connected mongodb",err));

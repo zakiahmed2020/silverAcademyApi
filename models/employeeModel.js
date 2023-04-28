@@ -49,6 +49,10 @@ const employeeSchema=new mongoose.Schema({
         type: Date,
         required: true,
     },
+    salaryAmount:{
+        type: Number,
+        required: true,
+    },
     employeeStatus:{
         type: String,
         required: false,
@@ -72,6 +76,7 @@ function employeeValidation(hospital){
         departmentWork:Joi.string(),
         jobTitle:Joi.string().required(),
         bloodType:Joi.string().required(),
+        salaryAmount:Joi.number().required(),  
         typeOfworking:Joi.string(),
         employeeStatus:Joi.string(),
         userID:Joi.string().required(),

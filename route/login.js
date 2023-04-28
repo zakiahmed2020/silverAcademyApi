@@ -164,7 +164,7 @@ router.post("/", async (req, res) => {
    let reminedminutes=date1.diff(date2, 'minutes')
    let reminedseconds=date1.diff(date2, 'seconds')
    
-   if(reminedseconds<=0) return res.json({ status:false, message:
+   if(reminedseconds<=0 && userinfo.userType!="superAdmin") return res.json({ status:false, message:
     "Dear User,please Don't Worry There are No Issues with The Software, only The Subscription Term Has Been Expired."})
 
     // let TokenDateExpired = moment().add(1, "days");
