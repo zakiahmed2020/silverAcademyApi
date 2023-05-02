@@ -9,7 +9,8 @@ const { roleModel, validateRoles } = require("../models/rolesModel");
 router.get("/", async function (req, res) {
   try {
     const rolesInfo = await roleModel.find();
-    res.send(rolesInfo);
+    let roles = rolesInfo.filter(r => r.role!="superAdmin");
+    res.send(roles);
   } catch (error) {
     res.send(error);
   }
